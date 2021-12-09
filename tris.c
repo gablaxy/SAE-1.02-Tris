@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
-#define N 8
+#define N 500000
 typedef int tableau[N];
 
 void generateTab(int tab[], int size) {
@@ -53,6 +54,7 @@ void tri_selection_decroissant(tableau t, int taille){
 void triCocktail(int liste[N]) {
 	bool echange = true;
 	int temp;
+    int compteur = 0;
 	while (echange==true) {
 		echange = false;
 		for (int indTab = 0; indTab < N-1; indTab++) {
@@ -71,6 +73,8 @@ void triCocktail(int liste[N]) {
 				echange = true;
 			}
 		}
+        compteur++;
+        printf("%d\n",compteur);
 	}
 }
 
@@ -202,8 +206,9 @@ void tri_fusion_decroissant(int t[], int debut, int fin){
 
 int main(){
     srand(time(NULL));
-    int t1[8]={10,16,-9,4,8,6,18,-6}; 
-    tri_fusion_decroissant(t1,0,N-1);
-    affichetab(t1);
+    int tab[N];
+    generateTab(tab,N);
+    triCocktail(tab);
+    affichetab(tab);
     return EXIT_SUCCESS;
 }
