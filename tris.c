@@ -12,11 +12,11 @@ void affichetab(int t[]){
     printf("\n");
 }
 
-void tri_selection_croissant(tableau t){
+void tri_selection_croissant(tableau t, int taille){
     int minind,temp;
-    for(int i = 0; i < N-1; i++){
+    for(int i = 0; i < taille-1; i++){
         minind = i;
-        for(int j = i+1; j < N; j++)
+        for(int j = i+1; j < taille; j++)
             if(t[j] < t[minind]){
                 minind = j;
             }
@@ -28,11 +28,11 @@ void tri_selection_croissant(tableau t){
     }
 }
 
-void tri_selection_decroissant(tableau t){
+void tri_selection_decroissant(tableau t, int taille){
     int maxind,temp;
-    for(int i = 0; i <N-1; i++){
+    for(int i = 0; i <taille-1; i++){
         maxind = i;
-        for(int j = i+1; j < N; j++)
+        for(int j = i+1; j < taille; j++)
             if(t[j] > t[maxind]){
                 maxind = j;
             }
