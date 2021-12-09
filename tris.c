@@ -5,6 +5,12 @@
 #define N 8
 typedef int tableau[N];
 
+void generateTab(int tab[], int size) {
+    for(int i = 0; i < size; i++) {
+        tab[i] = 1 + rand()%(10*RAND_MAX);
+    }
+}
+
 void affichetab(int t[]){
     for(int i=0; i<N-1; i++){
         printf("%d ",t[i]);
@@ -195,8 +201,8 @@ void tri_fusion_decroissant(int t[], int debut, int fin){
 
 
 int main(){
+    srand(time(NULL));
     int t1[8]={10,16,-9,4,8,6,18,-6}; 
-
     tri_fusion_decroissant(t1,0,N-1);
     affichetab(t1);
     return EXIT_SUCCESS;
