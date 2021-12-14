@@ -1,3 +1,6 @@
+/* Gabin LAVAZAIS
+   Lucien HERVE */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -207,8 +210,29 @@ void tri_fusion_decroissant(int t[], int debut, int fin){
 int main(){
     srand(time(NULL));
     int tab[N];
+	//Croissant Selection
+	generateTab(tab,N);
+    tri_selection_croissant(tab,N);
+    affichetab(tab);
+	//Decroissant Selection
+	generateTab(tab,N);
+    tri_selection_decroissant(tab,N);
+    affichetab(tab);
+	//Croissant Cocktail
     generateTab(tab,N);
     triCocktail(tab);
+    affichetab(tab);
+	//Décroissant Cocktail
+    generateTab(tab,N);
+    triCocktailDecr(tab);
+    affichetab(tab);
+	//Croissant Fusion
+	generateTab(tab,N);
+    tri_fusion_croissant(tab, 0, N);
+    affichetab(tab);
+	//Decoissant Fusion
+	generateTab(tab,N);
+    tri_fusion_decroissant(tab, 0, N);
     affichetab(tab);
     return EXIT_SUCCESS;
 }
