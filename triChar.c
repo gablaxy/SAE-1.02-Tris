@@ -166,6 +166,59 @@ void triFusionCroissant(tab tablo, int deb, int fin){
     }
 }
 
+// tri fusion décroissant
+void fusion_decroissant(tab tablo,int debut, int milieu, int fin){
+    int taille1 = milieu - debut + 1;
+    int taille2 = fin - milieu;
+
+    tab tabGauche;
+    tab tabDroite;
+
+    for (int i = 0; i < taille1; i++)
+        strcpy(tabGauche[i], tablo[debut+i]);
+    for (int j = 0; j < taille2; j++)
+        strcpy(tabDroite[j], tablo[milieu+1+j]);
+
+    int indG, indD, indice;
+    indG = 0;
+    indD = 0;
+    indice = debut;
+
+    while(indG < taille1 && indD < taille2){
+        if(strcmp(tabGauche[indG], tabDroite[indD])>0){
+            strcpy(tablo[indice], tabGauche[indG]);
+            indG++;
+        }else{
+            strcpy(tablo[indice], tabDroite[indD]);
+            indD++;
+        }
+        indice++;
+    }
+
+    while (indG < taille1){
+        strcpy(tablo[indice], tabGauche[indG]);
+        indG++;
+        indice++;
+        }
+     
+        while (indD < taille2){
+            strcpy(tablo[indice], tabGauche[indD]);
+            indD++;
+            indice++;
+        }
+}
+
+void tri_fusion_decroissant(tab tablo, int debut, int fin){
+    if(debut < fin){
+        int milieu = (debut + fin) / 2; // trouve le milieu
+        tri_fusion_decroissant(tablo, debut, milieu);
+        tri_fusion_decroissant(tablo, milieu + 1, fin);
+
+        fusion_decroissant(tablo, debut, milieu, fin);
+    }
+}
+
+
 int main() {
     tab tablo = {0};
     generateCharTab(tablo);
