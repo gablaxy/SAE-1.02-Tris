@@ -28,6 +28,9 @@ typedef struct {
 
 typedef donnees t_donnees[NBVAL];
 
+
+// procédure permettant d'aller chercher les données d'un fichier et les mettres dans un tableau de structures
+// paramètres : le nom du fichier d'où on extrait les données et le tableau où on va mettre ces dernières
 void LireFichier(char nomFichier[20], t_donnees t_covid) {
     FILE * fic;
     int compteur = 0;
@@ -40,6 +43,8 @@ void LireFichier(char nomFichier[20], t_donnees t_covid) {
     fclose(fic);
 }
 
+// procédure pour trier le tableau par le département
+// paramètres : le tableau, son indice de début et de fin
 void triDepartement(t_donnees tab,int debut,int fin){
     int i, j, pivot;
     donnees temp;
@@ -72,6 +77,8 @@ void triDepartement(t_donnees tab,int debut,int fin){
     }
 }
 
+// fonction renvoyant la population des Côtes d'Armor
+// paramètres : le tableau
 int population22(t_donnees tab){
     int departement = 0;
     int classe = -1;
@@ -87,6 +94,8 @@ int population22(t_donnees tab){
     return EXIT_FAILURE;
 }
 
+// procédure pour trier le tableau par la date
+// paramètres : le tableau, son indice de début et de fin
 void triDate(t_donnees tab,int debut,int fin){
     int i, j, pivot;
     donnees temp;
@@ -119,6 +128,8 @@ void triDate(t_donnees tab,int debut,int fin){
     }
 }
 
+// procédure pour trier le tableau par la tranche d'âge
+// paramètres : le tableau, son indice de début et de fin
 void triClasse(t_donnees tab,int debut,int fin){
     int i, j, pivot;
     donnees temp;
@@ -152,7 +163,8 @@ void triClasse(t_donnees tab,int debut,int fin){
 }
 
 
-
+// procédure remplissant un tableau de structure des données concernant le nombre de cas en Ille-et-Vilaine le 1er janvier 2021
+// paramètres : le tableau de base
 void DebutAnne35(t_donnees tab){
     t_donnees t_cas1erjanvier;
     int y = 0;
