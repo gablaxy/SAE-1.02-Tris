@@ -67,6 +67,20 @@ void triDepartement(t_donnees tab,int debut,int fin){
     }
 }
 
+int population22(t_donnees tab){
+    int departement = 0;
+    int classe = -1;
+    for(int i=0; i < NBVAL; i++){
+        departement = tab[i].dep;
+        classe = tab[i].classe;
+        if(classe == 0 && departement == 22){
+            return tab[i].pop;
+        }
+        i++;
+    }
+    return EXIT_FAILURE;
+}
+
 int main() {
     t_donnees t_covid;
     LireFichier("DonneesCovid.data", t_covid);
