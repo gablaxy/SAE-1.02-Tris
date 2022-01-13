@@ -35,6 +35,38 @@ void LireFichier(char nomFichier[20], t_donnees t_covid) {
     fclose(fic);
 }
 
+void triDepartement(t_donnees tab,int debut,int fin){
+    int i, j, pivot;
+    donnees temp;
+
+    if(debut<fin){
+        pivot=debut;
+        i=debut;
+        j=fin;
+
+        while(i<j){
+            while(tab[i].dep <= tab[pivot].dep && i<fin)
+                i++;
+
+            while(tab[j].dep > tab[pivot].dep)
+                j--;
+
+            if(i < j){
+                temp = tab[i];
+                tab[i] = tab[j];
+                tab[j] = temp;
+            }
+        }
+
+        temp = tab[pivot];
+        tab[pivot] = tab[j];
+        tab[j] = temp;
+
+        tri_rapide(tab,debut,j-1);
+        tri_rapide(tab,j+1,fin);
+    }
+}
+
 int main() {
     t_donnees t_covid;
     LireFichier("DonneesCovid.data", t_covid);
